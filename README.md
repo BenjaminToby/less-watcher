@@ -12,6 +12,14 @@ You need `less` npm package insalled. you can add it your project by running:
 npm install less
 ```
 
+## Installation
+
+To install this package simply run:
+
+```bash
+npm install lessc-watcher
+```
+
 ## How to use
 
 There are few different ways to run your less compiler
@@ -19,19 +27,19 @@ There are few different ways to run your less compiler
 #### Basic usage
 
 ```bash
-less-watcher --src ./folder --dst ./dist/less.css
+lessc-watcher --src ./folder --dst ./dist/less.css
 ```
 
 This traverses the folder and searches for a `main.less` file. This file serves as the source for your bundled `.css` file. If you want to target a specific file, use:
 
 ```bash
-less-watcher --src ./folder/src.less --dst ./dist/less.css
+lessc-watcher --src ./folder/src.less --dst ./dist/less.css
 ```
 
 Or you can just watch an entire folder. In this case less-watch will searc for an entry file named `main.less`. Without this entry file, your compiler wouldn't work.
 
 ```bash
-less-watcher --src ./folder --dst ./dist/less.css
+lessc-watcher --src ./folder --dst ./dist/less.css
 ```
 
 #### Adding more source folders
@@ -39,14 +47,14 @@ less-watcher --src ./folder --dst ./dist/less.css
 You can add more source folders by using a comma(`,`) separator. Example:
 
 ```bash
-less-watcher --src ./folder-1,./folder-2 --dst ./dist/folder-1.css,./dist/folder-2.css
+lessc-watcher --src ./folder-1,./folder-2 --dst ./dist/folder-1.css,./dist/folder-2.css
 ```
 
 **_NOTE:_** Your `--dst` input must match the number of comma-separated folders in your `src` input.
 
 #### Advanced Features
 
-less-watcher has more advanced features to better fine-tune your files
+lessc-watcher has more advanced features to better fine-tune your files
 
 ##### Ignore files
 
