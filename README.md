@@ -4,6 +4,14 @@ This package watches .less files and actively compiles them into .css files
 
 ---
 
+## Prerequisites
+
+You need `less` npm package insalled. you can add it your project by running:
+
+```bash
+npm install less
+```
+
 ## How to use
 
 There are few different ways to run your less compiler

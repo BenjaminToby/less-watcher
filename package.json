@@ -1,6 +1,6 @@
 {
     "name": "lessc-watcher",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A minimal package to watch less files and compile them to css",
     "main": "dist/index.js",
     "repository": {
@@ -16,8 +16,5 @@
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^20.4.5"
-    },
-    "dependencies": {
-        "less": "^4.1.3"
     }
 }
