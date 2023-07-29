@@ -1,7 +1,5 @@
 # Less watch for .less files
 
----
-
 This package watches .less files and actively compiles them into .css files
 
 ---
