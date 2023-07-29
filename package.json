@@ -1,8 +1,11 @@
 {
     "name": "lessc-watcher",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "A minimal package to watch less files and compile them to css",
     "main": "dist/index.js",
+    "bin": {
+        "lessc-watcher": "./dist/index.js"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/BenjaminToby/less-watcher.git"

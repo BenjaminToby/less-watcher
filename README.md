@@ -27,19 +27,19 @@ There are few different ways to run your less compiler
 #### Basic usage
 
 ```bash
-lessc-watcher --src ./folder --dst ./dist/less.css
+npx lessc-watcher --src ./folder --dst ./dist/less.css
 ```
 
 This traverses the folder and searches for a `main.less` file. This file serves as the source for your bundled `.css` file. If you want to target a specific file, use:
 
 ```bash
-lessc-watcher --src ./folder/src.less --dst ./dist/less.css
+npx lessc-watcher --src ./folder/src.less --dst ./dist/less.css
 ```
 
 Or you can just watch an entire folder. In this case less-watch will searc for an entry file named `main.less`. Without this entry file, your compiler wouldn't work.
 
 ```bash
-lessc-watcher --src ./folder --dst ./dist/less.css
+npx lessc-watcher --src ./folder --dst ./dist/less.css
 ```
 
 #### Adding more source folders
@@ -47,7 +47,7 @@ lessc-watcher --src ./folder --dst ./dist/less.css
 You can add more source folders by using a comma(`,`) separator. Example:
 
 ```bash
-lessc-watcher --src ./folder-1,./folder-2 --dst ./dist/folder-1.css,./dist/folder-2.css
+npx lessc-watcher --src ./folder-1,./folder-2 --dst ./dist/folder-1.css,./dist/folder-2.css
 ```
 
 **_NOTE:_** Your `--dst` input must match the number of comma-separated folders in your `src` input.
