@@ -1,6 +1,6 @@
 {
     "name": "lessc-watcher",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "A minimal package to watch less files and compile them to css",
     "main": "dist/index.js",
     "bin": {
