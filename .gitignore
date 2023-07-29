@@ -1,3 +1,4 @@
 # Ignore npm modules and src folder
 node_modules
 src
+tsconfig.json
