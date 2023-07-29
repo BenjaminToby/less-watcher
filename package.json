@@ -1,0 +1,19 @@
+{
+    "name": "less-watch",
+    "version": "1.0.0",
+    "description": "A minimal package to watch less files and compile them to css",
+    "main": "dist/index.js",
+    "keywords": [
+        "less",
+        "watcher",
+        "css"
+    ],
+    "author": "Benjamin Toby",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^20.4.5"
+    },
+    "dependencies": {
+        "less": "^4.1.3"
+    }
+}
