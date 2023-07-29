@@ -1,6 +1,6 @@
 # Less watch for .less files
 
-This package watches .less files and actively compiles them into .css files
+This is a super-light npm package that watches .less files and actively compiles them into .css files
 
 ---
 
