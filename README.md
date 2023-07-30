@@ -42,6 +42,8 @@ Or you can just watch an entire folder. In this case less-watch will searc for a
 npx lessc-watcher --src ./folder --dst ./dist/less.css
 ```
 
+**_NOTE:_** If you only provide a destination path, without specifying the exact file name in `.css`, your files will be compiled to a css file named `_main.css`. This is done to prevent conflicts with another possible `main.css` file.
+
 #### Adding more source folders
 
 You can add more source folders by using a comma(`,`) separator. Example:
