@@ -24,7 +24,7 @@ npm install lessc-watcher
 
 There are few different ways to run your less compiler
 
-#### Basic usage
+### Basic usage
 
 ```bash
 npx lessc-watcher --src ./folder --dst ./dist/less.css
@@ -44,7 +44,7 @@ npx lessc-watcher --src ./folder --dst ./dist/less.css
 
 **_NOTE:_** If you only provide a destination path, without specifying the exact file name in `.css`, your files will be compiled to a css file named `_main.css`. This is done to prevent conflicts with another possible `main.css` file.
 
-#### Adding more source folders
+### Adding more source folders
 
 You can add more source folders by using a comma(`,`) separator. Example:
 
@@ -54,15 +54,15 @@ npx lessc-watcher --src ./folder-1,./folder-2 --dst ./dist/folder-1.css,./dist/f
 
 **_NOTE:_** Your `--dst` input must match the number of comma-separated folders in your `src` input.
 
-#### Advanced Features
+## Advanced Features
 
 lessc-watcher has more advanced features to better fine-tune your files
 
-##### Ignore files
+### Ignore files
 
 Ignore files/folders by enlosing the names in braces. Eg `(general).less`
 
-##### Compile specific files
+### Compile specific files
 
 If you're watching an entire folder, you can compile specific files in that folder to a stanalone file. Example if you create a file named `[test].less` in your watch directory, in your distribution directory there will be an extra file named `test.css`.
 
