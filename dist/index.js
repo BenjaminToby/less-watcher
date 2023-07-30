@@ -61,7 +61,6 @@ for (let i = 0; i < sourceFiles.length; i++) {
         console.log("\x1b[33mERROR:\x1b[0m Source must be a folder or a .less file");
         process.exit();
     }
-    compile(srcFolder, dstFile, null);
     if (!fs_1.default.existsSync(srcFolder)) {
         if (srcFolder === null || srcFolder === void 0 ? void 0 : srcFolder.match(/\.less$/)) {
             fs_1.default.mkdirSync(srcFolder.replace(/\/[^\/]+\.less$/, ""), { recursive: true });
@@ -69,18 +68,23 @@ for (let i = 0; i < sourceFiles.length; i++) {
         }
         else {
             fs_1.default.mkdirSync(srcFolder.replace(/\/[^\/]+\.[^\/]+$/, ""), { recursive: true });
+            fs_1.default.writeFileSync((srcFolder + "/main.less").replace(/\/\//g, ""), "", "utf-8");
         }
+    }
+    else if (fs_1.default.existsSync(srcFolder) && fs_1.default.existsSync((srcFolder + "/main.less").replace(/\/\//g, ""))) {
+        fs_1.default.writeFileSync((srcFolder + "/main.less").replace(/\/\//g, ""), "", "utf-8");
     }
     if (!fs_1.default.existsSync(dstFile)) {
         if (dstFile === null || dstFile === void 0 ? void 0 : dstFile.match(/\.css$/)) {
             fs_1.default.mkdirSync(dstFile.replace(/\/[^\/]+\.css$/, ""), { recursive: true });
-            fs_1.default.writeFileSync(dstFile, "", "utf-8");
+            fs_1.default.writeFileSync(dstFile, "/* Your compiled CSS from your less file(s) goes here */", "utf-8");
         }
         else {
             fs_1.default.mkdirSync(dstFile.replace(/\/[^\/]+\.[^\/]+$/, ""), { recursive: true });
-            fs_1.default.writeFileSync((dstFile + "/_main.css").replace(/\/\//g, ""), "", "utf-8");
+            fs_1.default.writeFileSync((dstFile + "/_main.css").replace(/\/\//g, ""), "/* Your compiled CSS from your less file(s) goes here */", "utf-8");
         }
     }
+    compile(srcFolder, dstFile, null);
     fs_1.default.watch(srcFolder, { recursive: true }, (evtType, fileName) => {
         if (!fileName)
             return;

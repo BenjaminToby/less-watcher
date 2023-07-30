@@ -77,26 +77,29 @@ for (let i = 0; i < sourceFiles.length; i++) {
         process.exit();
     }
 
-    compile(srcFolder, dstFile, null);
-
     if (!fs.existsSync(srcFolder)) {
         if (srcFolder?.match(/\.less$/)) {
             fs.mkdirSync(srcFolder.replace(/\/[^\/]+\.less$/, ""), { recursive: true });
             fs.writeFileSync(srcFolder, "", "utf-8");
         } else {
             fs.mkdirSync(srcFolder.replace(/\/[^\/]+\.[^\/]+$/, ""), { recursive: true });
+            fs.writeFileSync((srcFolder + "/main.less").replace(/\/\//g, ""), "", "utf-8");
         }
+    } else if (fs.existsSync(srcFolder) && fs.existsSync((srcFolder + "/main.less").replace(/\/\//g, ""))) {
+        fs.writeFileSync((srcFolder + "/main.less").replace(/\/\//g, ""), "", "utf-8");
     }
 
     if (!fs.existsSync(dstFile)) {
         if (dstFile?.match(/\.css$/)) {
             fs.mkdirSync(dstFile.replace(/\/[^\/]+\.css$/, ""), { recursive: true });
-            fs.writeFileSync(dstFile, "", "utf-8");
+            fs.writeFileSync(dstFile, "/* Your compiled CSS from your less file(s) goes here */", "utf-8");
         } else {
             fs.mkdirSync(dstFile.replace(/\/[^\/]+\.[^\/]+$/, ""), { recursive: true });
-            fs.writeFileSync((dstFile + "/_main.css").replace(/\/\//g, ""), "", "utf-8");
+            fs.writeFileSync((dstFile + "/_main.css").replace(/\/\//g, ""), "/* Your compiled CSS from your less file(s) goes here */", "utf-8");
         }
     }
+
+    compile(srcFolder, dstFile, null);
 
     fs.watch(srcFolder, { recursive: true }, (evtType, fileName) => {
         if (!fileName) return;

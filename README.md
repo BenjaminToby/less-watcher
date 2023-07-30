@@ -30,7 +30,7 @@ There are few different ways to run your less compiler
 npx lessc-watcher --src ./folder --dst ./dist/less.css
 ```
 
-This traverses the folder and searches for a `main.less` file. This file serves as the source for your bundled `.css` file. If you want to target a specific file, use:
+This traverses the `--src` folder and searches for a `main.less` file. This file serves as the source for your bundled `.css` file. If you want to target a specific file, use:
 
 ```bash
 npx lessc-watcher --src ./folder/src.less --dst ./dist/less.css
