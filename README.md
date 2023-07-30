@@ -65,3 +65,50 @@ Ignore files/folders by enlosing the names in braces. Eg `(general).less`
 ##### Compile specific files
 
 If you're watching an entire folder, you can compile specific files in that folder to a stanalone file. Example if you create a file named `[test].less` in your watch directory, in your distribution directory there will be an extra file named `test.css`.
+
+## Using a `lesscw.config.json` file
+
+You can use a `lesscw.config.json` file to add your files instead of using the CLI interface. For this to work your `lesscw.config.json` file must be located in the root directory of your project, and it must contain at least one `src` and one `dst` entry
+
+### Basic Config JSON
+
+```json
+{
+    "src": "./folder",
+    "dst": "./dist/less.css"
+}
+```
+
+This works the same as running `npx lessc-watcher --src ./folder --dst ./dist/less.css` in your terminal. Instead you only need to run:
+
+```bash
+npx lessc-watcher
+```
+
+### Using multiple sources and destinations
+
+```json
+{
+    "src": ["./folder", "./folder-2", "./folder/sub-folder/admin.less"],
+    "dst": ["./dist/less.css", "./dist/folder-2/less.css", "./dist/sub-folder.css"]
+}
+```
+
+Like the CLI paradigm, the number of paths in the `src` array must match the `dst array`. And note that you can use multiple different folders with multiple different destinations.
+
+### Using a `srcDst` cofiguration
+
+ALternative to the `src` and `dst` paths, you can provide a `srcDst` key instead, this will contain an array of key-value pairs as follows
+
+```json
+{
+    "srcDst": [
+        {
+            "src": "./folder",
+            "dst": "./folder-2"
+        }
+    ]
+}
+```
+
+**_NOTE:_** If you provide a config file and still add `--src` and `--dst` arguments in your terminal, the terminal source and distributuion arguments will be ignored.
