@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
-import fs, { watch } from "fs";
-import { exec, spawn } from "child_process";
+import fs from "fs";
+import { exec } from "child_process";
 import { LessCssWatcherConfigObject } from "./index.d";
 
 //////////////////////////////////////////////////////////////////////////////
@@ -125,6 +125,14 @@ function traverseFiles(src: string, dst: string) {
 
         compile(srcFolder, dstFile, null);
 
+        try {
+            fs.readdirSync(srcFolder).forEach((file) => {
+                if (file?.match(/^\[.*\.less$/)) {
+                    compile(srcFolder + "/" + file, dstFile, null);
+                }
+            });
+        } catch (error) {}
+
         if (srcFolder?.match(/\.less$/)) {
             fs.watchFile(srcFolder, { interval: 500 }, (current, previous) => {
                 const dstFilePathRoot = dstFile?.match(/\.css$/) ? dstFile : dstFile + "/" + "_main.css";
@@ -156,7 +164,9 @@ function traverseFiles(src: string, dst: string) {
                     const currentProcessArgsSrc = process.argv[process.argv.indexOf("--src") + 1];
                     const activeSourceFiles = currentProcessArgsSrc.split(",");
 
-                    if (activeSourceFiles.includes(srcFilePathRoot)) {
+                    if (fileName?.match(/^\[/)) {
+                        compile(srcFolder + "/" + fileName, dstFile, evtType);
+                    } else if (fileName?.match(/^\(/) || activeSourceFiles.includes(srcFilePathRoot)) {
                         return;
                     } else {
                         compile(srcFilePathRoot, dstFile, evtType);
@@ -207,7 +217,7 @@ function compile(fileName: string, dst: string, evtType: string | null) {
 
         const targetDstFilePath = `${destinationFileParentFolder}/${targetPath}.css`;
 
-        finalSrcPath = `${fileName}/${targetPathFull}`;
+        finalSrcPath = fileName;
         finalDstPath = targetDstFilePath;
     }
 

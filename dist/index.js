@@ -103,6 +103,14 @@ function traverseFiles(src, dst) {
             }
         }
         compile(srcFolder, dstFile, null);
+        try {
+            fs_1.default.readdirSync(srcFolder).forEach((file) => {
+                if (file === null || file === void 0 ? void 0 : file.match(/^\[.*\.less$/)) {
+                    compile(srcFolder + "/" + file, dstFile, null);
+                }
+            });
+        }
+        catch (error) { }
         if (srcFolder === null || srcFolder === void 0 ? void 0 : srcFolder.match(/\.less$/)) {
             fs_1.default.watchFile(srcFolder, { interval: 500 }, (current, previous) => {
                 const dstFilePathRoot = (dstFile === null || dstFile === void 0 ? void 0 : dstFile.match(/\.css$/)) ? dstFile : dstFile + "/" + "_main.css";
@@ -132,7 +140,10 @@ function traverseFiles(src, dst) {
                 try {
                     const currentProcessArgsSrc = process.argv[process.argv.indexOf("--src") + 1];
                     const activeSourceFiles = currentProcessArgsSrc.split(",");
-                    if (activeSourceFiles.includes(srcFilePathRoot)) {
+                    if (fileName === null || fileName === void 0 ? void 0 : fileName.match(/^\[/)) {
+                        compile(srcFolder + "/" + fileName, dstFile, evtType);
+                    }
+                    else if ((fileName === null || fileName === void 0 ? void 0 : fileName.match(/^\(/)) || activeSourceFiles.includes(srcFilePathRoot)) {
                         return;
                     }
                     else {
@@ -167,7 +178,7 @@ function compile(fileName, dst, evtType) {
         const targetPath = targetPathFull.replace(/\[|\]/g, "").replace(/\.less/, "");
         const destinationFileParentFolder = dst.replace(/\/[^\/]+\.css$/, "");
         const targetDstFilePath = `${destinationFileParentFolder}/${targetPath}.css`;
-        finalSrcPath = `${fileName}/${targetPathFull}`;
+        finalSrcPath = fileName;
         finalDstPath = targetDstFilePath;
     }
     const executionCmd = `lessc ${finalSrcPath} ${finalDstPath}`;
