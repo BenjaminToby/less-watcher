@@ -1,6 +1,6 @@
 {
     "name": "lessc-watcher",
-    "version": "1.1.8",
+    "version": "1.1.9",
     "description": "A minimal package to watch less files and compile them to css",
     "main": "dist/index.js",
     "bin": {
@@ -16,7 +16,7 @@
         "css"
     ],
     "author": "Benjamin Toby",
-    "license": "ISC",
+    "license": "MIT",
     "devDependencies": {
         "@types/node": "^20.4.5"
     }
