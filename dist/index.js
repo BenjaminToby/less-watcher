@@ -160,7 +160,7 @@ function traverseFiles(src, dst) {
         }
         else if (!(srcFolder === null || srcFolder === void 0 ? void 0 : srcFolder.match(/\.[^\/]+$/))) {
             fs_1.default.watch(srcFolder, {
-                recursive: ((_a = process.platform) === null || _a === void 0 ? void 0 : _a.match(/win/i))
+                recursive: ((_a = process.platform) === null || _a === void 0 ? void 0 : _a.match(/win32/i))
                     ? true
                     : undefined,
             }, (evtType, fileName) => {

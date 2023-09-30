@@ -217,7 +217,7 @@ function traverseFiles(src: string, dst: string) {
             fs.watch(
                 srcFolder,
                 {
-                    recursive: process.platform?.match(/win/i)
+                    recursive: process.platform?.match(/win32/i)
                         ? true
                         : undefined,
                 },
