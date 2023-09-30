@@ -313,7 +313,7 @@ function compile(fileName: string, dst: string, evtType: string | null) {
         finalDstPath = targetDstFilePath;
     }
 
-    const executionCmd = `lessc ${finalSrcPath} ${finalDstPath}`;
+    const executionCmd = `npx lessc ${finalSrcPath} ${finalDstPath}`;
 
     exec(executionCmd, (error, stdout, stderr) => {
         /** @type {Error} */
